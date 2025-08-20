@@ -3,24 +3,11 @@ import { useLoaderData } from "react-router";
 
 const ExploreGardener = () => {
   const exploreData = useLoaderData();
-  // const {
-  //   _id,
-  //   title,
-  //   plant_type,
-  //   difficulty,
-  //   description,
-  //   image,
-  //   category,
-  //   availability,
-  //   email,
-  //   name,
-  //   phone,
-  // } = data;
+  
+  
   const [gardeners, setGardeners] = useState(exploreData);
 
-  // const  initialGarden  = useLoaderData(id);
-  // const [gardeners, setGardeners] = useState(initialGarden);
-  // console.log(initialGarden);
+ 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 py-20 bg-base-200">
       {gardeners.map((gardener) =>  (

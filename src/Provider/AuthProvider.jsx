@@ -29,6 +29,13 @@ const AuthProvider = ({children}) => {
         }
     }, [])
 
+    // -----------------OnAuth State Change-------------
+
+    useEffect(()=>{
+        const unsubscribe = onAuthStateChanged(auth, (currentUser)=>{
+            setUser(currentUser);
+        })
+    })
     // ----------------LogIn------------------
 
     const LogIn = (email, password) =>{

@@ -9,10 +9,11 @@ const Header = () => {
   const { user, logOut } = use(AuthContext);
   const [isHovered, setIsHovered] = useState(false);
 
+  // -----------------------theme controlling--------------
+
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "valentine");
 
   useEffect(() => {
-    // Apply theme to HTML tag
     document.documentElement.setAttribute("data-theme", theme);
     localStorage.setItem("theme", theme);
   }, [theme]);
@@ -21,8 +22,21 @@ const Header = () => {
     setTheme(theme === "valentine" ? "dark" : "valentine");
   };
 
+
+  const [userProfile, setUserProfile] = useState(null);
+
+  useEffect(() => {
+    if (user?._id) {
+      fetch(`http://localhost:3000/users/${user._id}`)
+        .then(res => res.json())
+        .then(data => {
+          setUserProfile(data);
+        })
+        .catch(err => console.error("Failed to load user profile", err));
+    }
+  }, [user]);
+
   const handleLogOut = () => {
-    console.log("logout done");
     logOut()
       .then(() => {
         Swal.fire({
@@ -55,6 +69,9 @@ const Header = () => {
         console.log(error);
       });
   };
+ 
+  
+
 
   return (
     <div className={`${theme === 'valentine' ? 'bg-lime-200' : 'bg-gray-900'} transition-colors`}>
@@ -75,11 +92,22 @@ const Header = () => {
               onMouseEnter={() => setIsHovered(true)}
               onMouseLeave={() => setIsHovered(false)}
             >
-              <img className="w-11 rounded-full" src={user.photoURL} alt="" />
-              {isHovered && user.email}
+                 <div className="relative">
+                <img
+                  className="w-11 h-11 rounded-full object-cover border border-white shadow"
+                  src={userProfile?.photo || 'logo.png'}
+                  alt={user.displayName}
+                />
+                {isHovered && (
+                  <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 bg-black text-white text-sm px-3 py-1 rounded shadow-lg z-10 whitespace-nowrap">
+                    {userProfile?.name || "No Name"}
+                  </div>
+                )}
+              </div>
+             
               <button
                 onClick={handleLogOut}
-                className="btn bg-lime-500 text-black font-semibold"
+                className="btn bg-lime-500 text-black font-semibold mr-4"
               >
                 LogOut
               </button>
@@ -155,7 +183,7 @@ const Header = () => {
           
         </div>
       </div>
-      <SlideShow></SlideShow>
+      
     </div>
   );
 };

@@ -4,10 +4,11 @@ import ShareCard from "../ShareCard";
 import { FaRegEye } from "react-icons/fa";
 import { Link, useLoaderData } from "react-router";
 
-const BrowserTips = ({_id}) => {
-  const initialGarden = useLoaderData(_id);
+const BrowserTips = () => {
+  const initialGarden = useLoaderData();
  
   const [gardeners, setGardeners] = useState(initialGarden);
+  
   console.log(initialGarden);
 
   return (
@@ -60,7 +61,7 @@ const BrowserTips = ({_id}) => {
                 <td>{gardener.difficulty}</td>
                 <td className="text-lg">{gardener.availability}</td>
                 <th>
-                  {/* <Link to={`/tipDetails/${gardener._id}`}>okay</Link> */}
+         
                   <Link to={`/tipDetails/${gardener._id}`}>
                       
                     <FaRegEye className="text-2xl" />
@@ -68,12 +69,15 @@ const BrowserTips = ({_id}) => {
                   </Link>  
                 </th>
               </tr>
+                
   
   
                  )
               }
+             
               
             </tbody>
+           
           </table>
         </div>
       </div>

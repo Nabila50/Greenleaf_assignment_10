@@ -1,50 +1,52 @@
 import React from "react";
-import { Link } from "react-router";
-import Swal from "sweetalert2";
+import { useLoaderData } from "react-router";
 
-const ShareTips = () => {
-  const handleShare = (e) => {
+const UpdateTip = () => {
+  const {
+    _id,
+    title,
+    plant_type,
+    difficulty,
+    description,
+    image,
+    category,
+    availability,
+    email,
+    name,
+    phone,
+  } = useLoaderData();
+
+  const handleUpdateTip = () => {
     e.preventDefault();
     const form = e.target;
     const formData = new FormData(form);
-    const newShare = Object.fromEntries(formData);
-    console.log(newShare);
+    const updatedTips = Object.fromEntries(formData.entries());
+    console.log(updatedTips);
 
-    // send share data to the MongoDB
-    fetch("http://localhost:3000/gardens", {
-      method: "POST",
+    // send updatedTip to the database
+    fetch(`http://localhost:3000/gardens/${_id}`, {
+      method: "PUT",
       headers: {
-        "content-type": "application/json",
+        "content-type": "application/json"
       },
-      body: JSON.stringify(newShare),
+      body: JSON.stringify(updatedTips)
     })
       .then((res) => res.json())
       .then((data) => {
-        if (data.insertedId) {
-          Swal.fire({
-            title: "Data Added Successfully",
-            icon: "success",
-            draggable: true,
-          });
-          form.reset();
+        if (data.modifiedCount > 0) {
+          alert("Tip updated successfully!");
         }
       });
   };
+
   return (
-    <div className="hero bg-base-100 min-h-screen mt-10 p-15">
-      <div className="hero-content grid grid-cols-1 bg-lime-200 px-15 py-12 rounded-lg">
-        <form onSubmit={handleShare}>
+    <div className="hero bg-base-100 min-h-screen  mt-10 p-15">
+      <div className="lg:w-5xl bg-lime-200 px-5 lg:px-15 py-12 rounded-lg">
+        <form onSubmit={handleUpdateTip}>
           <div className="text-center">
-            <h1 className="text-4xl font-bold lobster-regular">
-              Share Your Tips
+            <h1 className="text-2xl md:text-4xl font-bold lobster-regular">
+              Update Your Tips
             </h1>
-            <p className="my-5">
-              Gardening is both an art and a science—nurturing plants while
-              creating a beautiful, balanced space. It connects you to nature,
-              reduces stress, and can even provide fresh food or flowers. With
-              patience and care, a tiny seed can grow into something vibrant and
-              life-giving.
-            </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 py-5">
             <fieldset className="fieldset bg-base-200 border-base-300 rounded-box border p-4">
@@ -53,6 +55,7 @@ const ShareTips = () => {
                 type="text"
                 className="input w-full"
                 name="title"
+                defaultValue={title}
                 placeholder="Write your title"
               />
             </fieldset>
@@ -61,6 +64,7 @@ const ShareTips = () => {
               <input
                 type="text"
                 name="plant_type"
+                defaultValue={plant_type}
                 className="input w-full"
                 placeholder="Plant Type"
               />
@@ -71,9 +75,9 @@ const ShareTips = () => {
                 <input
                   type="radio"
                   name="difficulty"
+                  defaultChecked={difficulty === "Easy"}
                   className="radio radio-success mr-3"
                   value="Easy"
-                  defaultChecked
                 />{" "}
                 <p>Easy</p>
               </div>
@@ -81,9 +85,9 @@ const ShareTips = () => {
                 <input
                   type="radio"
                   name="difficulty"
+                  defaultChecked={difficulty === "medium"}
                   className="radio radio-success mr-3"
                   value="Medium"
-                  defaultChecked
                 />{" "}
                 <p>Medium</p>
               </div>
@@ -91,6 +95,7 @@ const ShareTips = () => {
                 <input
                   type="radio"
                   name="difficulty"
+                  defaultChecked={difficulty === "hard"}
                   className="radio radio-success mr-3"
                   value="Hard"
                 />{" "}
@@ -102,6 +107,7 @@ const ShareTips = () => {
               <input
                 type="text"
                 name="description"
+                defaultValue={description}
                 className="input  w-full"
                 placeholder="Description"
               />
@@ -111,6 +117,7 @@ const ShareTips = () => {
               <input
                 type="text"
                 name="image"
+                defaultValue={image}
                 className="input  w-full"
                 placeholder="Image URL"
               />
@@ -121,6 +128,7 @@ const ShareTips = () => {
                 <input
                   type="radio"
                   name="category"
+                  defaultValue={category}
                   className="radio radio-success mr-3"
                   value="composting"
                   defaultChecked
@@ -131,6 +139,7 @@ const ShareTips = () => {
                 <input
                   type="radio"
                   name="category"
+                  defaultValue={category}
                   className="radio radio-success mr-3"
                   value="Plant care"
                 />{" "}
@@ -140,6 +149,7 @@ const ShareTips = () => {
                 <input
                   type="radio"
                   name="category"
+                  defaultValue={category}
                   className="radio radio-success mr-3"
                   value="Vertical Gardening"
                   defaultChecked
@@ -153,6 +163,7 @@ const ShareTips = () => {
                 <input
                   type="radio"
                   name="availability"
+                  defaultValue={availability}
                   className="radio radio-success mr-3"
                   value="public"
                   defaultChecked
@@ -163,6 +174,7 @@ const ShareTips = () => {
                 <input
                   type="radio"
                   name="availability"
+                  defaultValue={availability}
                   className="radio radio-success mr-3"
                   value="hidden"
                   defaultChecked
@@ -175,6 +187,7 @@ const ShareTips = () => {
               <input
                 type="text"
                 name="email"
+                defaultValue={email}
                 className="input  w-full"
                 placeholder="Enter Your Email Address"
               />
@@ -184,6 +197,7 @@ const ShareTips = () => {
               <input
                 type="text"
                 name="name"
+                defaultValue={name}
                 className="input  w-full"
                 placeholder="Enter your name"
               />
@@ -193,18 +207,17 @@ const ShareTips = () => {
               <input
                 type="text"
                 name="phone"
+                defaultValue={phone}
                 className="input  w-full"
                 placeholder="Enter your phone"
               />
             </fieldset>
           </div>
-
-          <input type="submit" className="btn w-full" value="Submit Form" />
-         
+          <input type="submit" className="btn w-full" value="Update Tip" />
         </form>
       </div>
     </div>
   );
 };
 
-export default ShareTips;
+export default UpdateTip;

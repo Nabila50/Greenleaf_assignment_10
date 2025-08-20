@@ -1,36 +1,41 @@
-import React, { use } from "react";
-import { AuthContext } from "../../Provider/AuthProvider";
-import { useLoaderData, useParams } from "react-router";
  
+import React from "react";
+import { Link, useLoaderData } from "react-router"; 
+import Loading from "../Loading";  
 
 const MyTips = () => {
- 
-  const TipsData = useLoaderData;
-  const {_id, name, email, status} = TipsData;
+  const gardens = useLoaderData();  
+  // const { name, age, gender, email, status, experience, tips, phone, photo } = users;
+  console.log(gardens);
 
-  
-  
-  const { user } = use(AuthContext);
- 
   return (
-    <div>
-      {user && (
-        <div className="hero bg-base-200 min-h-screen">
-          <div className="hero-content flex-col lg:flex-row">
-            
+    <div className="mb-20">
+      <div className="w-11/12 mx-auto mt-8">
+        <div className="  bg-lime-200 shadow-xl p-8  ">
+          <div className="grid grid-cols-1 lg:flex items-center gap-10">
             <img
-              src={TipsData.image}
-              className="max-w-sm rounded-lg shadow-2xl"
-            />
-            <div>
-              <h1 className="text-5xl font-bold">{TipsData.email}</h1>
-              <p className="py-6">
-                {TipsData.status}               </p>
-              <button className="btn btn-primary">Get Started</button>
-            </div>
+            src={gardens?.photo}
+            alt={ gardens?.name || "No Name"}
+            className="w-100 h-100 rounded-lg object-cover shadow-lg"
+          />
+          <div>
+            <h2 className="text-3xl font-bold">Name: {gardens?.name}</h2>
+            <p className="text-lg mt-3"><span className="font-semibold">Age:</span> {gardens?.age} Years</p>
+            <p className="text-lg mt-1"><span className="font-semibold">Gender:</span> {gardens?.gender}</p>
+            <p className="text-lg mt-1"><span className="font-semibold">Email: </span>{gardens?.email}</p>
+            <p className="text-lg mt-1"><span className="font-semibold">Status:</span> {gardens?.status}</p>
+            <p className="mt-2"><span className="font-semibold">Experience:</span> {gardens?.experience} Years</p>
+            <p className="mt-2"><span className="font-semibold">Tips:</span> {gardens?.tips}</p>
+            <p className="mt-2"><span className="font-semibold">Phone:</span> {gardens?.phone}</p>
+
+            <Link to={`/UpdateTip/${gardens._id}`}> <button className="btn bg-lime-500 text-black font-semibold mt-6">Update Profile</button></Link>
+             
+           
           </div>
+          </div>
+          
         </div>
-      )}
+      </div>
     </div>
   );
 };

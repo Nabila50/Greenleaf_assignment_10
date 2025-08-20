@@ -5,9 +5,8 @@ const ActiveGardeners = () => {
   const [gardeners, setGardeners] = useState([]);
 
   useEffect(() => {
-    // Fetch the gardener data from the API or directly from your DB
-    // Example API call using fetch (assuming a backend API is set up)
-    fetch('http://localhost:3000/users')  // Update with your actual endpoint
+     
+    fetch('http://localhost:3000/users')   
       .then(response => response.json())
       .then(data => {
      

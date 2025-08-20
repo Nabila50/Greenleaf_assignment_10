@@ -16,6 +16,7 @@ import AuthLayout from "./layouts/AuthLayout.jsx";
 import AuthProvider from "./Provider/AuthProvider.jsx";
 import PrivateRoute from "./Provider/PrivateRoute.jsx";
 import TipDetails from "./Components/Pages/TipDetails.jsx";
+import UpdateTip from "./Components/UpdateTip.jsx";
 
 const router = createBrowserRouter([
   {
@@ -46,7 +47,8 @@ const router = createBrowserRouter([
       },
       {
         path: "/users/:id",
-        loader: ({params}) => fetch(`http://localhost:3000/users/${params._id}`),
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/users/${params._id}`),
         element: (
           <PrivateRoute>
             <MyTips></MyTips>
@@ -57,7 +59,7 @@ const router = createBrowserRouter([
       {
         path: "tipDetails/:id",
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/gardens/${params.id}`),
+          fetch(`http://localhost:3000/garden/${params.id}`),
         element: (
           <PrivateRoute>
             <TipDetails></TipDetails>
@@ -65,11 +67,22 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "myTips",
-        loader: ({params}) => fetch(`http://localhost:3000/users/${params._id}`),
+        path: "myTips/:email",
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/gardens/${params.email}`),
         element: (
           <PrivateRoute>
             <MyTips></MyTips>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "UpdateTip/:id",
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/gardens/${params.id}`),
+        element: (
+          <PrivateRoute>
+            <UpdateTip></UpdateTip>
           </PrivateRoute>
         ),
       },
@@ -87,22 +100,15 @@ const router = createBrowserRouter([
         path: "/auth/signup",
         Component: SignUp,
       },
-      {
-        path: "/auth/share",
-        element: (
-          <PrivateRoute>
-            <ShareTips></ShareTips>
-          </PrivateRoute>
-        ),
-      },
-      {
-        path: "/auth/myTips",
-        element: (
-          <PrivateRoute>
-            <MyTips></MyTips>
-          </PrivateRoute>
-        ),
-      },
+
+      // {
+      //   path: "myTips",
+      //   element: (
+      //     <PrivateRoute>
+      //       <MyTips></MyTips>
+      //     </PrivateRoute>
+      //   ),
+      // },
     ],
   },
 ]);

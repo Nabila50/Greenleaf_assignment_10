@@ -12,7 +12,11 @@ const Home = () => {
 
 
     <div>
+         
+         <SlideShow></SlideShow>
+
          <h1>home page is good.............</h1>
+         
 
          <ActiveGardeners></ActiveGardeners>
         
