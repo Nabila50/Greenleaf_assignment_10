@@ -17,6 +17,7 @@ import AuthProvider from "./Provider/AuthProvider.jsx";
 import PrivateRoute from "./Provider/PrivateRoute.jsx";
 import TipDetails from "./Components/Pages/TipDetails.jsx";
 import UpdateTip from "./Components/UpdateTip.jsx";
+import ErrorPage from "./Components/ErrorPage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -67,7 +68,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "myTips/:email",
+        path: "/myTips/:email",
         loader: ({ params }) =>
           fetch(`http://localhost:3000/gardens/${params.email}`),
         element: (
@@ -86,6 +87,10 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
+      {
+        path: "/*",
+        element: <ErrorPage></ErrorPage>
+      }
     ],
   },
   {

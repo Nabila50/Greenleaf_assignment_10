@@ -38,8 +38,8 @@ const Navbar = () => {
        <NavLink
           to={`myTips/${user?.email}`}
           className= {({ isActive }) =>
-          isActive ? 'text-green-600 font-bold border-b-2 px-3 border-green-600' : 'text-black-700 font-semibold px-3'
-        }>
+          isActive ? 'text-green-600 font-bold border-b-2 px-3 border-green-600' : 'text-black-700 font-semibold px-3' }
+       >
           My Tips
         </NavLink>
 
