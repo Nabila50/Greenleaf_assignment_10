@@ -28,7 +28,7 @@ const MyTips = () => {
             <p className="mt-2"><span className="font-semibold">Tips:</span> {gardens?.tips}</p>
             <p className="mt-2"><span className="font-semibold">Phone:</span> {gardens?.phone}</p>
 
-            <Link to={`/UpdateTip/${gardens._id}`}> <button className="btn bg-lime-500 text-black font-semibold mt-6">Update Profile</button></Link>
+            <Link to={`/UpdateTip/${gardens._id}`}> <button className="btn bg-lime-500 text-black font-semibold mt-6">Update Tips</button></Link>
              
            
           </div>

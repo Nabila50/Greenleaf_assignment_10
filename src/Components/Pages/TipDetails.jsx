@@ -21,8 +21,8 @@ const TipDetails = () => {
   // console.log(initialGardener);
 
   return (
-    <div className="bg-lime-100">
-      <div className=" bg-lime-100 min-h-screen pt-10">
+    <div className="bg-base-100 my-20 ">
+      <div className=" bg-lime-100 py-10 rounded-4xl">
         <h1 className="lobster-regular text-4xl text-center font-bold pb-10">
           Gardener Profile and Tips
         </h1>
