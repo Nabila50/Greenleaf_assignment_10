@@ -1,6 +1,7 @@
 
 import Header from "../../layouts/Header";
-import ActiveGardeners from "../Active";
+import Active from "../Active";
+ 
 import SlideShow from "../SlideShow";
 
 import ExploreGardener from "./ExploreGardener";
@@ -16,9 +17,8 @@ const Home = () => {
          <SlideShow></SlideShow>
 
          <h1>home page is good.............</h1>
-         
-
-         <ActiveGardeners></ActiveGardeners>
+ 
+        <Active></Active>
         
        
     </div>
