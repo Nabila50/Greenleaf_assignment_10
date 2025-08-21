@@ -13,7 +13,17 @@ const SignUp = () => {
     const formData = new FormData(form);
     const { email, password, ...restFormData } = Object.fromEntries(formData.entries());
     console.log(email, password, restFormData);
-
+    
+    // password validation------------------
+    const passwordReq =  /^(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{8,}$/;
+     if (!passwordReq.test(password)) {
+      Swal.fire({
+        icon: "error",
+        title: "Password Invalid",
+        text: "Password should be at least 8 characters long and include 1 uppercase, 1 lowercase, and 1 special character.",
+      });
+      return;
+    }
     createUser(email, password)
       .then((result) => {
         console.log(result.user);
@@ -162,7 +172,7 @@ const SignUp = () => {
               </fieldset>
             </div>
 
-            <button to="/browser"  type="submit" className="btn btn-neutral mt-4">
+            <button to="/" type="submit" className="btn btn-neutral mt-4">
               SignUp
             </button>
             <p className="text-center">

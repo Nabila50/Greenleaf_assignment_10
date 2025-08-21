@@ -1,5 +1,6 @@
 import React from "react";
-import { useLoaderData } from "react-router";
+import { Link, NavLink, useLoaderData } from "react-router";
+import Swal from "sweetalert2";
 
 const UpdateTip = () => {
   const {
@@ -27,14 +28,20 @@ const UpdateTip = () => {
     fetch(`http://localhost:3000/gardens/${_id}`, {
       method: "PUT",
       headers: {
-        "content-type": "application/json"
+        "content-type": "application/json",
       },
-      body: JSON.stringify(updatedTips)
+      body: JSON.stringify(updatedTips),
     })
       .then((res) => res.json())
       .then((data) => {
-        if (data.modifiedCount > 0) {
-          alert("Tip updated successfully!");
+        if (data.modifiedCount) {
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Tips updated successfully",
+            showConfirmButton: false,
+            timer: 1500,
+          });
         }
       });
   };
@@ -213,7 +220,9 @@ const UpdateTip = () => {
               />
             </fieldset>
           </div>
-          <input type="submit" className="btn w-full" value="Update Tip" />
+          <Link to={`/gardens/${_id}`}>
+            <input type="submit" className="btn w-full" value="Update Tip" />
+          </Link>
         </form>
       </div>
     </div>
