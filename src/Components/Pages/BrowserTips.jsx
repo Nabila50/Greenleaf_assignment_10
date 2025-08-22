@@ -56,10 +56,10 @@ const BrowserTips = () => {
       </h2>
 
       <div className="overflow-x-auto">
-        <table className="table">
+        <table className="table min-w-full ">
           {/* head */}
           <thead>
-            <tr className="font-bold text-lg text-black">
+            <tr className="font-bold text-lg text-black   sm:col-span-7">
               <th>Serial No</th>
               <th>
                 <div>

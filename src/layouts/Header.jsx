@@ -75,14 +75,14 @@ const Header = () => {
 
   return (
     <div className={`${theme === 'valentine' ? 'bg-lime-200' : 'bg-gray-900'} transition-colors`}>
-      <div className="w-11/12 mx-auto grid grid-cols-1 md:grid-cols-12 py-3 justify-center">
-        <div className="col-span-2">
+      <div className="w-11/12 mx-auto grid grid-cols-9 md:grid-cols-12 py-3 justify-center">
+        <div className="md:col-span-2">
           <img className="w-20" src="logo.png" alt="" />
         </div>
         <div className="col-span-7 text-center pt-4">
           <Navbar></Navbar>
         </div>
-        <div className="col-span-3 pt-3 flex justify-center">
+        <div className="col-span-9 md:col-span-3 pt-3 flex justify-center">
 
           {/* toggle--------- */}
           <div>

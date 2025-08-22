@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router";
+import { Link, useLoaderData } from "react-router";
 
 const Active = () => {
-  // State to hold the gardener data
+  
+  // const {_id, name, status} = useLoaderData()
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:3000/users")
+    fetch("http://localhost:3000/users/active")
       .then((response) => response.json())
       .then((data) => {
         setUsers(data);
@@ -60,9 +61,9 @@ const Active = () => {
                 <p className="text-lg">
                   <strong>Email:</strong> {user.email}
                 </p>
-                <div className="card-actions justify-end">
+                {/* <div className="card-actions justify-end">
                   <Link to={`/users/${_id}`} className="btn btn-primary">View Details</Link>
-                </div>
+                </div> */}
               </div>
             </div>
           ))}
