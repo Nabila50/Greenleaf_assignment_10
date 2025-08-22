@@ -22,7 +22,7 @@ const Active = () => {
 
   return (
     <div className="my-20">
-      <h2 className="text-3xl font-bold text-center my-7 lobster-regular ">Featured Active Gardeners</h2>
+      <h2 className="text-3xl font-bold text-center my-7 lobster-regular">Featured Active Gardeners</h2>
       {loading ? (
         <span className="loading loading-bars loading-xl place-items-center"></span>
       ) : users.length === 0 ? (
@@ -32,12 +32,12 @@ const Active = () => {
           {users.map((user) => (
             <div
               key={user._id}
-              className="flex bg-lime-200 shadow-sm px-5 rounded-2xl"
+              className="flex bg-lime-100 shadow-sm px-5 rounded-2xl"
             >
               <figure>
                 <img
-                  src={user.photo || "https://via.placeholder.com/150"}
-                  alt={user.name || "Gardener"}
+                  src={user.photo}
+                  alt={user.name}
                   className="w-40 h-40 object-cover rounded-full mt-10"
                 />
               </figure>
