@@ -21,14 +21,14 @@ const Active = () => {
   }, []);
 
   return (
-    <div className="my-20">
-      <h2 className="text-3xl font-bold text-center my-7 lobster-regular">Featured Active Gardeners</h2>
+    <div className="my-20 bg-lime-50 py-8 px-10 rounded-2xl ">
+      <h2 className="text-3xl font-bold text-center py-3 mb-4 lobster-regular">Featured Active Gardeners</h2>
       {loading ? (
         <span className="loading loading-bars loading-xl place-items-center"></span>
       ) : users.length === 0 ? (
         <p>No active gardeners available.</p>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2  gap-10 ">
+        <div className="grid grid-cols-1 sm:grid-cols-2  gap-5 ">
           {users.map((user) => (
             <div
               key={user._id}

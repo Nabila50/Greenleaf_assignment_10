@@ -18,7 +18,7 @@ const TradingTips = () => {
 
   
   return (
-    <div className="my-10">
+    <div className="my-10 ">
       <ul className="list bg-lime-100 rounded-box shadow-md">
         <li className="p-4 pb-2 text-3xl font-bold text-center my-5 lobster-regular tracking-wide">
           Top Trading Tips
@@ -26,7 +26,7 @@ const TradingTips = () => {
         {tips.map((tip) => (
           <li
             key={tip._id}
-            className="list-row bg-lime-100 border-lime-400 border-1"
+            className="list-row bg-lime-50 border-lime-400 border-1"
           >
             <div>
               <img className="size-30 rounded-box" src={tip.image} />

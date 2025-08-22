@@ -1,5 +1,6 @@
 
 import Header from "../../layouts/Header";
+import Accordion from "../Accordion";
 import Active from "../Active";
  
 import SlideShow from "../SlideShow";
@@ -19,7 +20,7 @@ const Home = () => {
  
         <Active></Active>
         <TradingTips></TradingTips>
-        
+        <Accordion></Accordion>
        
     </div>
   );

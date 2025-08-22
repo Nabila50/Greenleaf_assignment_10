@@ -32,7 +32,7 @@ const ShareTips = () => {
   };
   return (
     <div className="hero bg-base-100 min-h-screen mt-10 p-15">
-      <div className="hero-content grid grid-cols-1 bg-lime-200 px-15 py-12 rounded-lg">
+      <div className="hero-content grid grid-cols-1 bg-lime-100 px-15 py-12 rounded-lg">
         <form onSubmit={handleShare}>
           <div className="text-center">
             <h1 className="text-4xl font-bold lobster-regular">
