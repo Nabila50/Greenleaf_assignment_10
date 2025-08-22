@@ -96,7 +96,7 @@ const Header = () => {
                 <img
                   className="w-11 h-11 rounded-full object-cover border border-white shadow"
                   src={userProfile?.photo || 'logo.png'}
-                  alt={user.displayName}
+                  alt="name"
                 />
                 {isHovered && (
                   <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 bg-black text-white text-sm px-3 py-1 rounded shadow-lg z-10 whitespace-nowrap">

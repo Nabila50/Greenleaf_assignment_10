@@ -1,7 +1,9 @@
 
 import Header from "../../layouts/Header";
-import Accordion from "../Accordion";
+import FaQ from "../FaQ";
+import Accordion from "../FaQ";
 import Active from "../Active";
+import Journey from "../Journey";
  
 import SlideShow from "../SlideShow";
 import TradingTips from "../TradingTips";
@@ -20,7 +22,8 @@ const Home = () => {
  
         <Active></Active>
         <TradingTips></TradingTips>
-        <Accordion></Accordion>
+        <Journey></Journey>
+        <FaQ></FaQ>
        
     </div>
   );

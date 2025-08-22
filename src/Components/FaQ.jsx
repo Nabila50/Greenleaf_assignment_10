@@ -1,6 +1,6 @@
 import React from "react";
 
-const Accordion = () => {
+const FaQ = () => {
   return (
     <div className="mb-10 bg-lime-100 py-8">
       <h1 className="text-3xl lobster-regular font-bold text-center mb-8">
@@ -57,4 +57,4 @@ const Accordion = () => {
   );
 };
 
-export default Accordion;
+export default FaQ;
