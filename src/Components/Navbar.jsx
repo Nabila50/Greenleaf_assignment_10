@@ -12,33 +12,33 @@ const Navbar = () => {
   return (
     <div className="w-11/12 mx-auto justify-center text-center text-base ">
       <NavLink to="/" className= {({ isActive }) =>
-          isActive ? 'text-green-600 font-bold border-b-2 px-3 border-green-600' : 'text-black-700 font-semibold px-3'
+          isActive ? 'text-green-600 font-bold border-b-2 px-2 border-green-600' : 'text-black-700 font-semibold px-2'
         }>
          {" "}
         Home
          
       </NavLink>
-      <NavLink to="explore" className= {({ isActive }) =>
-          isActive ? 'text-green-600 font-bold border-b-2 px-3 border-green-600' : 'text-black-700 font-semibold px-3'
+      <NavLink to="/explore" className= {({ isActive }) =>
+          isActive ? 'text-green-600 font-bold border-b-2 px-2 border-green-600' : 'text-black-700 font-semibold px-2'
         }>
         {" "}
         Explore Gardeners
       </NavLink>
-      <NavLink to="browser"  className= {({ isActive }) =>
-          isActive ? 'text-green-600 font-bold border-b-2 px-3 border-green-600' : 'text-black-700 font-semibold px-3'
+      <NavLink to="/browser"  className= {({ isActive }) =>
+          isActive ? 'text-green-600 font-bold border-b-2 px-2 border-green-600' : 'text-black-700 font-semibold px-2'
         }>
           {" "}
         Browse Tips
       </NavLink>
-      <NavLink to="share" className= {({ isActive }) =>
-          isActive ? 'text-green-600 font-bold border-b-2 px-3 border-green-600' : 'text-black-700 font-semibold px-3'
+      <NavLink to="/share" className= {({ isActive }) =>
+          isActive ? 'text-green-600 font-bold border-b-2 px-2 border-green-600' : 'text-black-700 font-semibold px-2'
         }>
         Share a Garden Tip
       </NavLink>
        <NavLink
           to={`myTips/${user?.email}`}
           className= {({ isActive }) =>
-          isActive ? 'text-green-600 font-bold border-b-2 px-3 border-green-600' : 'text-black-700 font-semibold px-3' }
+          isActive ? 'text-green-600 font-bold border-b-2 px-2 border-green-600' : 'text-black-700 font-semibold px-2' }
        >
           My Tips
         </NavLink>

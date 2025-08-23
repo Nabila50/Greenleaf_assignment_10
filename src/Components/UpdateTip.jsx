@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, NavLink, useLoaderData } from "react-router";
+import { Link, useLoaderData } from "react-router";
 import Swal from "sweetalert2";
 
 const UpdateTip = () => {
@@ -17,7 +17,7 @@ const UpdateTip = () => {
     phone,
   } = useLoaderData();
 
-  const handleUpdateTip = () => {
+  const handleUpdateTip = (e) => {
     e.preventDefault();
     const form = e.target;
     const formData = new FormData(form);
@@ -25,7 +25,7 @@ const UpdateTip = () => {
     console.log(updatedTips);
 
     // send updatedTip to the database
-    fetch(`http://localhost:3000/gardens/${_id}`, {
+    fetch(`https://greenleaf-assignment-10.vercel.app/gardens/${email}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -220,7 +220,7 @@ const UpdateTip = () => {
               />
             </fieldset>
           </div>
-          <Link to={`/gardens/${_id}`}>
+          <Link to={`/myTips/${email}`}>
             <input type="submit" className="btn w-full" value="Update Tip" />
           </Link>
         </form>

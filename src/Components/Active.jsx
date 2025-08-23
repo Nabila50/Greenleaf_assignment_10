@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useLoaderData } from "react-router";
+import { Link } from "react-router";
 
 const Active = () => {
   
@@ -8,27 +8,24 @@ const Active = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:3000/users/active")
-      .then((response) => response.json())
+    fetch("https://greenleaf-assignment-10.vercel.app/users")
+      .then((res) => res.json())
       .then((data) => {
+        console.log(data);
         setUsers(data);
         setLoading(false);
       })
       .catch((error) => {
         console.error("Error fetching users:", error);
         setLoading(false);
+        setUsers([]);
       });
   }, []);
 
   return (
     <div className="my-20 bg-lime-50 py-8 px-10 rounded-2xl ">
       <h2 className="text-3xl font-bold text-center py-3 mb-4 lobster-regular">Featured Active Gardeners</h2>
-      {loading ? (
-        <span className="loading loading-bars loading-xl place-items-center"></span>
-      ) : users.length === 0 ? (
-        <p>No active gardeners available.</p>
-      ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2  gap-5 ">
+       <div className="grid grid-cols-1 sm:grid-cols-2  gap-5 ">
           {users.map((user) => (
             <div
               key={user._id}
@@ -61,14 +58,12 @@ const Active = () => {
                 <p className="text-lg">
                   <strong>Email:</strong> {user.email}
                 </p>
-                {/* <div className="card-actions justify-end">
-                  <Link to={`/users/${_id}`} className="btn btn-primary">View Details</Link>
-                </div> */}
+            
               </div>
             </div>
           ))}
         </div>
-      )}
+      
     </div>
   );
 };

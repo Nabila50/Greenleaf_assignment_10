@@ -20,8 +20,8 @@ const Login = () => {
     console.log(email, password);
     LogIn(email, password)
       .then((result) => {
-        const user = result.user;
-        console.log(user);
+        const users = result.user;
+        console.log(users);
         navigate(`${location.state ? location.state : "/"}`);
         Swal.fire({
           title: "LogIn Successfully",

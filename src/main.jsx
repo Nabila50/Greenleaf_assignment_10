@@ -30,12 +30,12 @@ const router = createBrowserRouter([
       },
       {
         path: "explore",
-        loader: () => fetch(`http://localhost:3000/users`),
+        loader: () => fetch(`https://greenleaf-assignment-10.vercel.app/users`),
         Component: ExploreGardener,
       },
       {
         path: "browser",
-        loader: () => fetch(`http://localhost:3000/gardens`),
+        loader: () => fetch(`https://greenleaf-assignment-10.vercel.app/gardens`),
         Component: BrowserTips,
       },
       {
@@ -47,9 +47,9 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/users/:id",
+        path: "/myTips/:id",
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/users/${params._id}`),
+          fetch(`https://greenleaf-assignment-10.vercel.app/users/${params._id}`),
         element: (
           <PrivateRoute>
             <MyTips></MyTips>
@@ -60,7 +60,7 @@ const router = createBrowserRouter([
       {
         path: "tipDetails/:id",
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/garden/${params.id}`),
+          fetch(`https://greenleaf-assignment-10.vercel.app/garden/${params.id}`),
         element: (
           <PrivateRoute>
             <TipDetails></TipDetails>
@@ -70,7 +70,15 @@ const router = createBrowserRouter([
       {
         path: "/myTips/:email",
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/gardens/${params.email}`),
+          fetch(`https://greenleaf-assignment-10.vercel.app/gardens/${params.email}`),
+        element: (
+          <PrivateRoute>
+            <MyTips></MyTips>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "myTips",
         element: (
           <PrivateRoute>
             <MyTips></MyTips>
@@ -80,7 +88,7 @@ const router = createBrowserRouter([
       {
         path: "UpdateTip/:id",
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/gardens/${params.id}`),
+          fetch(`https://greenleaf-assignment-10.vercel.app/gardens/${params.id}`),
         element: (
           <PrivateRoute>
             <UpdateTip></UpdateTip>
@@ -106,14 +114,7 @@ const router = createBrowserRouter([
         Component: SignUp,
       },
 
-      // {
-      //   path: "myTips",
-      //   element: (
-      //     <PrivateRoute>
-      //       <MyTips></MyTips>
-      //     </PrivateRoute>
-      //   ),
-      // },
+      
     ],
   },
 ]);

@@ -1,12 +1,13 @@
 import React, { use, useEffect, useState } from "react";
 import Navbar from "../Components/Navbar";
-import { Link } from "react-router";
+import { Link, useLoaderData } from "react-router";
 import { AuthContext } from "../Provider/AuthProvider";
 import Swal from "sweetalert2";
 import SlideShow from "../Components/SlideShow";
 
-const Header = () => {
+const Header = (id) => {
   const { user, logOut } = use(AuthContext);
+  const users = useLoaderData(id)
   const [isHovered, setIsHovered] = useState(false);
 
   // -----------------------theme controlling--------------
@@ -26,10 +27,11 @@ const Header = () => {
   const [userProfile, setUserProfile] = useState(null);
 
   useEffect(() => {
-    if (user?._id) {
-      fetch(`http://localhost:3000/users/${user._id}`)
+    if (user?.uid) {
+      fetch(`https://greenleaf-assignment-10.vercel.app/users/${user.uid}`)
         .then(res => res.json())
         .then(data => {
+          console.log(data);
           setUserProfile(data);
         })
         .catch(err => console.error("Failed to load user profile", err));
@@ -98,10 +100,10 @@ const Header = () => {
                   src={userProfile?.image || 'logo.png'}
                   alt="name"
                 />
-                {isHovered && (
+                {isHovered && userProfile &&(
                   <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 bg-black text-white text-sm px-3 py-1 rounded shadow-lg z-10 whitespace-nowrap">
-                    <p>{userProfile && userProfile.email}</p>
-                    {userProfile?.name || "No Name"}
+                    {/* <p>{userProfile.email}</p> */}
+                    <p>{userProfile?.name || "No Name"}</p>
                   </div>
                 )}
               </div>
