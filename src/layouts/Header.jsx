@@ -28,7 +28,7 @@ const Header = (id) => {
 
   useEffect(() => {
     if (user?.uid) {
-      fetch(`https://greenleaf-assignment-10.vercel.app/users/${user.uid}`)
+      fetch(`https://garden-community-website.web.app/users/${user.uid}`)
         .then(res => res.json())
         .then(data => {
           console.log(data);

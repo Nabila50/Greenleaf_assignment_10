@@ -11,7 +11,7 @@ const ShareTips = () => {
     console.log(newShare);
 
     // send share data to the MongoDB
-    fetch("https://greenleaf-assignment-10.vercel.app/gardens", {
+    fetch("https://garden-community-website.web.app/gardens", {
       method: "POST",
       headers: {
         "content-type": "application/json",

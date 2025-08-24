@@ -26,7 +26,7 @@ const BrowserTips = () => {
       // console.log(result.isConfirmed);
       if (result.isConfirmed) {
         // send data to DB
-        fetch(`https://greenleaf-assignment-10.vercel.app/gardens/${_id}`, {
+        fetch(`https://garden-community-website.web.app/gardens/${_id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

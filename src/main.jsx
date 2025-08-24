@@ -29,13 +29,13 @@ const router = createBrowserRouter([
         Component: Home,
       },
       {
-        path: "explore",
-        loader: () => fetch(`https://greenleaf-assignment-10.vercel.app/users`),
+        path: "/explore",
+        loader: () => fetch(`https://garden-community-website.web.app/users`),
         Component: ExploreGardener,
       },
       {
-        path: "browser",
-        loader: () => fetch(`https://greenleaf-assignment-10.vercel.app/gardens`),
+        path: "/browser",
+        loader: () => fetch(`https://garden-community-website.web.app/gardens`),
         Component: BrowserTips,
       },
       {
@@ -47,9 +47,9 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/myTips/:id",
+        path: "/myTips/details/:id",
         loader: ({ params }) =>
-          fetch(`https://greenleaf-assignment-10.vercel.app/users/${params._id}`),
+          fetch(`https://garden-community-website.web.app/users/details/${params.id}`),
         element: (
           <PrivateRoute>
             <MyTips></MyTips>
@@ -58,9 +58,9 @@ const router = createBrowserRouter([
       },
 
       {
-        path: "tipDetails/:id",
+        path: "/tipDetails/:id",
         loader: ({ params }) =>
-          fetch(`https://greenleaf-assignment-10.vercel.app/garden/${params.id}`),
+          fetch(`https://garden-community-website.web.app/garden/${params.id}`),
         element: (
           <PrivateRoute>
             <TipDetails></TipDetails>
@@ -70,7 +70,7 @@ const router = createBrowserRouter([
       {
         path: "/myTips/:email",
         loader: ({ params }) =>
-          fetch(`https://greenleaf-assignment-10.vercel.app/gardens/${params.email}`),
+          fetch(`https://garden-community-website.web.app/gardens/${params.email}`),
         element: (
           <PrivateRoute>
             <MyTips></MyTips>
@@ -88,7 +88,7 @@ const router = createBrowserRouter([
       {
         path: "UpdateTip/:id",
         loader: ({ params }) =>
-          fetch(`https://greenleaf-assignment-10.vercel.app/gardens/${params.id}`),
+          fetch(`https://garden-community-website.web.app/gardens/${params.id}`),
         element: (
           <PrivateRoute>
             <UpdateTip></UpdateTip>

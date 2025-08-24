@@ -8,7 +8,7 @@ const Active = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("https://greenleaf-assignment-10.vercel.app/users")
+    fetch("https://garden-community-website.web.app/users/active")
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

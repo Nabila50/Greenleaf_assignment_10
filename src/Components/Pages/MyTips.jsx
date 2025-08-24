@@ -8,7 +8,7 @@ import Swal from "sweetalert2";
 const MyTips = () => {
   const Tips = useLoaderData();
   
-  const [allTips, setAllTips] = useState(Tips)
+  const [allTips, setAllTips] = useState([...Tips])
 
    const handleDelete = (_id) => {
       Swal.fire({
@@ -23,7 +23,7 @@ const MyTips = () => {
         console.log(result.isConfirmed);
         if (result.isConfirmed) {
           // send data to DB
-          fetch(`https://greenleaf-assignment-10.vercel.app/gardens/${_id}`, {
+          fetch(`https://garden-community-website.web.app/gardens/${_id}`, {
             method: "DELETE",
           })
             .then((res) => res.json())

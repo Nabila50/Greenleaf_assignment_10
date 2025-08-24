@@ -34,7 +34,7 @@ const SignUp = () => {
         }
       
         // save profile info in the DB
-        fetch("https://greenleaf-assignment-10.vercel.app/users", {
+        fetch("https://garden-community-website.web.app/users", {
           method: "POST",
           headers: {
             "content-type": "application/json",
