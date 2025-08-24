@@ -28,7 +28,7 @@ const Header = (id) => {
 
   useEffect(() => {
     if (user?.uid) {
-      fetch(`https://garden-community-website.web.app/users/${user.uid}`)
+      fetch(`http://localhost:3000/users/${user.uid}`)
         .then(res => res.json())
         .then(data => {
           console.log(data);

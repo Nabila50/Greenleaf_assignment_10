@@ -8,7 +8,7 @@ const Active = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("https://garden-community-website.web.app/users/active")
+    fetch("http://localhost:3000/users")
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

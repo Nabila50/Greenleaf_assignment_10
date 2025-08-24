@@ -29,13 +29,13 @@ const router = createBrowserRouter([
         Component: Home,
       },
       {
-        path: "/explore",
-        loader: () => fetch(`https://garden-community-website.web.app/users`),
+        path: "explore",
+        loader: () => fetch(`http://localhost:3000/users`),
         Component: ExploreGardener,
       },
       {
-        path: "/browser",
-        loader: () => fetch(`https://garden-community-website.web.app/gardens`),
+        path: "browser",
+        loader: () => fetch(`http://localhost:3000/gardens`),
         Component: BrowserTips,
       },
       {
@@ -49,7 +49,7 @@ const router = createBrowserRouter([
       {
         path: "/myTips/details/:id",
         loader: ({ params }) =>
-          fetch(`https://garden-community-website.web.app/users/details/${params.id}`),
+          fetch(`http://localhost:3000/users/details/${params.id}`),
         element: (
           <PrivateRoute>
             <MyTips></MyTips>
@@ -60,7 +60,7 @@ const router = createBrowserRouter([
       {
         path: "/tipDetails/:id",
         loader: ({ params }) =>
-          fetch(`https://garden-community-website.web.app/garden/${params.id}`),
+          fetch(`http://localhost:3000/garden/${params.id}`),
         element: (
           <PrivateRoute>
             <TipDetails></TipDetails>
@@ -70,7 +70,7 @@ const router = createBrowserRouter([
       {
         path: "/myTips/:email",
         loader: ({ params }) =>
-          fetch(`https://garden-community-website.web.app/gardens/${params.email}`),
+          fetch(`http://localhost:3000/gardens/${params.email}`),
         element: (
           <PrivateRoute>
             <MyTips></MyTips>
@@ -88,7 +88,7 @@ const router = createBrowserRouter([
       {
         path: "UpdateTip/:id",
         loader: ({ params }) =>
-          fetch(`https://garden-community-website.web.app/gardens/${params.id}`),
+          fetch(`http://localhost:3000/gardens/${params.id}`),
         element: (
           <PrivateRoute>
             <UpdateTip></UpdateTip>

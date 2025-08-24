@@ -25,7 +25,7 @@ const UpdateTip = () => {
     console.log(updatedTips);
 
     // send updatedTip to the database
-    fetch(`https://garden-community-website.web.app/gardens/${email}`, {
+    fetch(`http://localhost:3000/gardens/${email}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

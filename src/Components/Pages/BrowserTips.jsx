@@ -26,7 +26,7 @@ const BrowserTips = () => {
       // console.log(result.isConfirmed);
       if (result.isConfirmed) {
         // send data to DB
-        fetch(`https://garden-community-website.web.app/gardens/${_id}`, {
+        fetch(`http://localhost:3000/gardens/${_id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

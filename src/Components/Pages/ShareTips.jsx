@@ -11,7 +11,7 @@ const ShareTips = () => {
     console.log(newShare);
 
     // send share data to the MongoDB
-    fetch("https://garden-community-website.web.app/gardens", {
+    fetch("http://localhost:3000/gardens", {
       method: "POST",
       headers: {
         "content-type": "application/json",
