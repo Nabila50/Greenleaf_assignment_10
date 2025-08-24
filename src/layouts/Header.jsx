@@ -28,13 +28,13 @@ const Header = (id) => {
 
   useEffect(() => {
     if (user?.uid) {
-      fetch(`http://localhost:3000/users/${user.uid}`)
+      fetch(`https://greenleaf-assignment-10.vercel.app/users/${user.uid}`)
         .then(res => res.json())
         .then(data => {
           console.log(data);
           setUserProfile(data);
         })
-        .catch(err => console.error("Failed to load user profile", err));
+        .catch(err => {console.error("Failed to load user profile", err)});
     }
   }, [user]);
 
@@ -97,7 +97,7 @@ const Header = (id) => {
                  <div className="relative">
                 <img
                   className="w-11 h-11 rounded-full object-cover border border-white shadow"
-                  src={userProfile?.image || 'logo.png'}
+                  src={userProfile?.photo || 'logo.png'}
                   alt="name"
                 />
                 {isHovered && userProfile &&(

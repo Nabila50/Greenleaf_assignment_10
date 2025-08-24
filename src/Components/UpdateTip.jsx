@@ -1,8 +1,8 @@
 import React from "react";
-import { Link, useLoaderData } from "react-router";
+import { Link, useLoaderData, useNavigate } from "react-router";
 import Swal from "sweetalert2";
 
-const UpdateTip = () => {
+const UpdateTip = ({ handleUpdateTip}) => {
   const {
     _id,
     title,
@@ -16,6 +16,7 @@ const UpdateTip = () => {
     name,
     phone,
   } = useLoaderData();
+   const navigate = useNavigate();
 
   const handleUpdateTip = (e) => {
     e.preventDefault();
@@ -25,7 +26,7 @@ const UpdateTip = () => {
     console.log(updatedTips);
 
     // send updatedTip to the database
-    fetch(`http://localhost:3000/gardens/${email}`, {
+    fetch(`https://greenleaf-assignment-10.vercel.app/gardens/info/${_id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -42,7 +43,16 @@ const UpdateTip = () => {
             showConfirmButton: false,
             timer: 1500,
           });
+          handleUpdateTip(updatedTips);
+          navigate(`/myTips/${email}`);
         }
+      })
+      .catch((error) => {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Something went wrong. Please try again later.",
+        });
       });
   };
 
@@ -220,9 +230,10 @@ const UpdateTip = () => {
               />
             </fieldset>
           </div>
-          <Link to={`/myTips/${email}`}>
-            <input type="submit" className="btn w-full" value="Update Tip" />
-          </Link>
+          <input onSubmit={()=>handleUpdateTip} type="submit" className="btn w-full" value="Update Tip" />
+          {/* <Link to={`/myTips/${email}`}>
+            
+          </Link> */}
         </form>
       </div>
     </div>

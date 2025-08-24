@@ -23,7 +23,7 @@ const MyTips = () => {
         console.log(result.isConfirmed);
         if (result.isConfirmed) {
           // send data to DB
-          fetch(`http://localhost:3000/gardens/${_id}`, {
+          fetch(`https://greenleaf-assignment-10.vercel.app/gardens/${_id}`, {
             method: "DELETE",
           })
             .then((res) => res.json())
@@ -45,6 +45,13 @@ const MyTips = () => {
         }
       });
     };
+    
+    const handleUpdateTip = (updatedTip) => {
+    const updatedTipsList = allTips.map((tip) =>
+      tip._id === updatedTip._id ? updatedTip : tip
+    );
+    setAllTips(updatedTipsList); // Update the tip in the state
+  };
 
   return (
     <div className="mb-20">
