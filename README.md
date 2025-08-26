@@ -3,6 +3,12 @@
 # Live site link
  
 Live site link of the project is: https://greenleaf-assignment-10-website.netlify.app/
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+# Features of my Projects
+ 5 features of my Project is:
+ => Firebase Authentication system (create Zser, login users and signup users)
+ => Using Mongodb for Backend data collection system
+ => Using CURD Operation for get, change, update and delete data from the database and showing in UI
+ => Filtering data according to the project requirement
+ => Showing the card in a dynamic ways according to the requirement
+# Project Description
+It is a gardening website where you can find avtive and inactive gardeners by signup our website. Different kinds of Tips are also available for gardening. anyone can signup and login into website and can share his/her gardening idea through a form to others.
