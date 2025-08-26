@@ -1,8 +1,9 @@
-import React from "react";
+import React, { use } from "react";
 import { Link, useLoaderData, useNavigate } from "react-router";
 import Swal from "sweetalert2";
+import { AuthContext } from "../Provider/AuthProvider";
 
-const UpdateTip = ({ handleUpdateTip}) => {
+const UpdateTip = () => {
   const {
     _id,
     title,
@@ -16,9 +17,10 @@ const UpdateTip = ({ handleUpdateTip}) => {
     name,
     phone,
   } = useLoaderData();
+ 
    const navigate = useNavigate();
 
-  const handleUpdateTip = (e) => {
+  const handleUpdateTipForm = (e) => {
     e.preventDefault();
     const form = e.target;
     const formData = new FormData(form);
@@ -26,8 +28,8 @@ const UpdateTip = ({ handleUpdateTip}) => {
     console.log(updatedTips);
 
     // send updatedTip to the database
-    fetch(`https://greenleaf-assignment-10.vercel.app/gardens/info/${_id}`, {
-      method: "PUT",
+    fetch(`http://localhost:3000/gardens/info/${_id}`, {
+      method: 'PUT',
       headers: {
         "content-type": "application/json",
       },
@@ -43,7 +45,7 @@ const UpdateTip = ({ handleUpdateTip}) => {
             showConfirmButton: false,
             timer: 1500,
           });
-          handleUpdateTip(updatedTips);
+          
           navigate(`/myTips/${email}`);
         }
       })
@@ -59,7 +61,7 @@ const UpdateTip = ({ handleUpdateTip}) => {
   return (
     <div className="hero bg-base-100 min-h-screen  mt-10 p-15">
       <div className="lg:w-5xl bg-lime-200 px-5 lg:px-15 py-12 rounded-lg">
-        <form onSubmit={handleUpdateTip}>
+        <form onSubmit={handleUpdateTipForm}>
           <div className="text-center">
             <h1 className="text-2xl md:text-4xl font-bold lobster-regular">
               Update Your Tips
@@ -230,10 +232,8 @@ const UpdateTip = ({ handleUpdateTip}) => {
               />
             </fieldset>
           </div>
-          <input onSubmit={()=>handleUpdateTip} type="submit" className="btn w-full" value="Update Tip" />
-          {/* <Link to={`/myTips/${email}`}>
-            
-          </Link> */}
+          <input type="submit" className="btn w-full" value="Update Tip" />
+        
         </form>
       </div>
     </div>

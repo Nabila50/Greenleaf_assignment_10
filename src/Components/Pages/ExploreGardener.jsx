@@ -25,8 +25,8 @@ const ExploreGardener = () => {
             <p className="text-base"><span className="font-semibold">Gender: </span>{gardener.gender} </p>
             <p className="text-base"><span className="font-semibold">Status: </span>{gardener.status} </p>
             <p className="text-base"><span className="font-semibold">Experience: </span>{gardener.experience} years </p>
-            <p className="text-base"><span className="font-semibold">Total Shared Tips: </span>{gardener.tips} years </p>
-            <p className="text-base"><span className="font-semibold">Contact Number:</span>{gardener.phone} years </p>
+            <p className="text-base"><span className="font-semibold">Total Shared Tips: </span>{gardener.tips} </p>
+            <p className="text-base"><span className="font-semibold">Contact Number:</span>{gardener.phone}  </p>
              
           </div>
         </div>

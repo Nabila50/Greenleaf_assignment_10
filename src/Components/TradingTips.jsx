@@ -6,7 +6,7 @@ const TradingTips = () => {
  
 
   useEffect(() => {
-    fetch("https://greenleaf-assignment-10.vercel.app/gardens/description")
+    fetch("http://localhost:3000/gardens/description")
       .then((response) => response.json())
       .then((data) => {
         setTips(data);

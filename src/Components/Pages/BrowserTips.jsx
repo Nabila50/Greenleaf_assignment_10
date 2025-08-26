@@ -28,7 +28,7 @@ const BrowserTips = () => {
         // send data to DB
 
        
-        fetch(`https://greenleaf-assignment-10.vercel.app/gardens/${_id}`, {
+        fetch(`http://localhost:3000/gardens/${_id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

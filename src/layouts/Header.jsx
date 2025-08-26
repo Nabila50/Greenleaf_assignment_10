@@ -1,18 +1,23 @@
-import React, { use, useEffect, useState } from "react";
+import React, { use, useContext, useEffect, useState } from "react";
 import Navbar from "../Components/Navbar";
 import { Link, useLoaderData } from "react-router";
 import { AuthContext } from "../Provider/AuthProvider";
 import Swal from "sweetalert2";
 import SlideShow from "../Components/SlideShow";
 
-const Header = (id) => {
-  const { user, logOut } = use(AuthContext);
-  const users = useLoaderData(id)
+const Header = () => {
+  const { user, logOut } = useContext(AuthContext);
+  // const users = useLoaderData()
   const [isHovered, setIsHovered] = useState(false);
+
+  const [userProfile, setUserProfile] = useState(null);
+  // console.log (userProfile);
 
   // -----------------------theme controlling--------------
 
-  const [theme, setTheme] = useState(localStorage.getItem("theme") || "valentine");
+  const [theme, setTheme] = useState(
+    localStorage.getItem("theme") || "valentine"
+  );
 
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
@@ -23,22 +28,22 @@ const Header = (id) => {
     setTheme(theme === "valentine" ? "dark" : "valentine");
   };
 
-
-  const [userProfile, setUserProfile] = useState(null);
-
   useEffect(() => {
     if (user?.uid) {
-      fetch(`https://greenleaf-assignment-10.vercel.app/users/${user.uid}`)
-        .then(res => res.json())
-        .then(data => {
+      fetch(`http://localhost:3000/users/uid/${user.uid}`)
+        .then((res) => res.json())
+        .then((data) => {
           console.log(data);
           setUserProfile(data);
         })
-        .catch(err => {console.error("Failed to load user profile", err)});
+        .catch((err) => {
+          console.error("Failed to load user profile", err);
+        });
     }
   }, [user]);
 
-  const handleLogOut = () => {
+  const handleLogOut = (e) => {
+    e.preventDefault();
     logOut()
       .then(() => {
         Swal.fire({
@@ -71,12 +76,14 @@ const Header = (id) => {
         console.log(error);
       });
   };
+
  
-  
-
-
   return (
-    <div className={`${theme === 'valentine' ? 'bg-lime-200' : 'bg-gray-900'} transition-colors`}>
+    <div
+      className={`${
+        theme === "valentine" ? "bg-lime-200" : "bg-gray-900"
+      } transition-colors`}
+    >
       <div className="w-11/12 mx-auto grid grid-cols-9 md:grid-cols-12 py-3 justify-center">
         <div className="md:col-span-2">
           <img className="w-20" src="logo.png" alt="" />
@@ -85,52 +92,50 @@ const Header = (id) => {
           <Navbar></Navbar>
         </div>
         <div className="col-span-9 md:col-span-3 pt-3 flex justify-center">
-
           {/* toggle--------- */}
           <div>
             {user ? (
-            <div
-              className="flex gap-5 justify-center"
-              onMouseEnter={() => setIsHovered(true)}
-              onMouseLeave={() => setIsHovered(false)}
-            >
-                 <div className="relative">
-                <img
-                  className="w-11 h-11 rounded-full object-cover border border-white shadow"
-                  src={userProfile?.photo || 'logo.png'}
-                  alt="name"
-                />
-                {isHovered && userProfile &&(
-                  <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 bg-black text-white text-sm px-3 py-1 rounded shadow-lg z-10 whitespace-nowrap">
-                    {/* <p>{userProfile.email}</p> */}
-                    <p>{userProfile?.name || "No Name"}</p>
-                  </div>
-                )}
+              <div
+                className="flex gap-5 justify-center"
+                onMouseEnter={() => setIsHovered(true)}
+                onMouseLeave={() => setIsHovered(false)}
+              >
+                <div className="relative">
+                  <img
+                    className="w-11 h-11 rounded-full object-cover border border-white shadow"
+                    src={userProfile?.photo || "logo.png"}
+                    alt="profile"
+                  />
+                  {isHovered && userProfile && (
+                    <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 bg-black text-white text-sm px-3 py-1 rounded shadow-lg z-10 whitespace-nowrap">
+                      <p>{userProfile?.name || "No Name"}</p>
+                    </div>
+                  )}
+                </div>
+
+                <button
+                  onClick={handleLogOut}
+                  className="btn bg-lime-500 text-black font-semibold mr-4"
+                >
+                  LogOut
+                </button>
               </div>
-             
-              <button
-                onClick={handleLogOut}
-                className="btn bg-lime-500 text-black font-semibold mr-4"
-              >
-                LogOut
-              </button>
-            </div>
-          ) : (
-            <div>
-              <Link
-                to="/auth/login"
-                className="btn bg-lime-500 text-black font-semibold mr-4"
-              >
-                Login
-              </Link>
-              <Link
-                to="/auth/signup"
-                className="btn bg-lime-500 text-black font-semibold mr-4"
-              >
-                SignUp
-              </Link>
-            </div>
-          )}
+            ) : (
+              <div>
+                <Link
+                  to="/auth/login"
+                  className="btn bg-lime-500 text-black font-semibold mr-4"
+                >
+                  Login
+                </Link>
+                <Link
+                  to="/auth/signup"
+                  className="btn bg-lime-500 text-black font-semibold mr-4"
+                >
+                  SignUp
+                </Link>
+              </div>
+            )}
           </div>
           <div className="mt-1">
             <label className="toggle text-base-content">
@@ -182,11 +187,8 @@ const Header = (id) => {
               </svg>
             </label>
           </div>
-
-          
         </div>
       </div>
-      
     </div>
   );
 };

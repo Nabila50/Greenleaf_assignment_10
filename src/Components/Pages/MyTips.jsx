@@ -23,7 +23,7 @@ const MyTips = () => {
         console.log(result.isConfirmed);
         if (result.isConfirmed) {
           // send data to DB
-          fetch(`https://greenleaf-assignment-10.vercel.app/gardens/${_id}`, {
+          fetch(`http://localhost:3000/gardens/${_id}`, {
             method: "DELETE",
           })
             .then((res) => res.json())
@@ -45,24 +45,25 @@ const MyTips = () => {
         }
       });
     };
-    
-    const handleUpdateTip = (updatedTip) => {
-    const updatedTipsList = allTips.map((tip) =>
-      tip._id === updatedTip._id ? updatedTip : tip
-    );
-    setAllTips(updatedTipsList); // Update the tip in the state
-  };
+
+//   const handleUpdateTip = (updatedTip) => {
+//   // Update the tip in the state list
+//   const updatedTipsList = allTips.map((tip) =>
+//     tip._id === updatedTip._id ? updatedTip : tip
+//   );
+//   setAllTips(updatedTipsList); // Set the updated list
+// };
 
   return (
-    <div className="mb-20">
+    <div className="mb-20 ">
       <div className=" mt-8">
-        <div className="  bg-lime-100 shadow-xl p-8  ">
-          <div className="grid grid-cols-1 lg:flex items-center gap-10">
+        <div className="bg-lime-100 shadow-xl p-8  ">
+          <div className="grid grid-cols-1 lg:flex items-center gap-5">
             <div className="overflow-x-auto">
-              <table className="table">
+              <table className="table  w-11/12 mx-auto">
                 {/* head */}
                 <thead>
-                  <tr className="font-bold text-lg text-black">
+                  <tr className="font-bold text-base text-black">
                     <th>Title</th>
                     <th>Category</th>
                     <th>Level</th>
@@ -109,7 +110,7 @@ const MyTips = () => {
                         </button>
                       </th>
                       <th>
-                        <Link to={`/UpdateTip/${tip._id}`}>
+                        <Link to={`/UpdateTip/info/${tip._id}`}>
                           {" "}
                           <button className="btn bg-lime-500 text-black font-semibold px-4 py-2">
                             Update

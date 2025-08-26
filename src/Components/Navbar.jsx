@@ -4,11 +4,10 @@ import { AuthContext } from "../Provider/AuthProvider";
 
 const Navbar = () => {
   const initialUser = useLoaderData();
+   const { user } = use(AuthContext);
 
   const [users, setUsers] = useState(initialUser);
-
-  const { user } = use(AuthContext);
-  console.log(user)
+ 
   return (
     <div className="w-11/12 mx-auto justify-center text-center text-base ">
       <NavLink to="/" className= {({ isActive }) =>
