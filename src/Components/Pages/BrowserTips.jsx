@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import ShareCard from "../ShareCard";
-// import { Link, Links, useLoaderData } from "react-router";
 import { FaRegEye } from "react-icons/fa";
 import { Link, useLoaderData } from "react-router";
 import { RiDeleteBin5Fill } from "react-icons/ri";
@@ -26,9 +25,7 @@ const BrowserTips = () => {
       // console.log(result.isConfirmed);
       if (result.isConfirmed) {
         // send data to DB
-
-       
-        fetch(`http://localhost:3000/gardens/${_id}`, {
+        fetch(`https://greenleaf-assignment-10.vercel.app/gardens/${_id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -40,7 +37,7 @@ const BrowserTips = () => {
               icon: "success",
             });
 
-            // Removing the tips from the state
+            // Removing the tips from the state---------------------------
 
             const remainingTips = gardeners.filter(garden => garden._id !== _id);
             setGardeners(remainingTips);
@@ -52,13 +49,13 @@ const BrowserTips = () => {
   };
 
   return (
-    <div className="mt-15">
+    <div className="my-12">
       <h2 className="text-3xl text-center font-bold mb-10">
         Total Users: {initialGarden.length}
       </h2>
 
       <div className="overflow-x-auto">
-        <table className="table min-w-full ">
+        <table className="table-auto w-full min-w-full sm:horizontal ">
           {/* head */}
           <thead>
             <tr className="font-bold text-lg text-black   sm:col-span-7">

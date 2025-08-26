@@ -34,7 +34,7 @@ const SignUp = () => {
         }
       
         // save profile info in the DB
-        fetch("http://localhost:3000/users", {
+        fetch("https://greenleaf-assignment-10.vercel.app/users", {
           method: "POST",
           headers: {
             "content-type": "application/json",
@@ -58,7 +58,7 @@ const SignUp = () => {
       })
       .catch((error) => {
         const errorCode = error.code;
-        // const errorMessage = error.message;
+       
         Swal.fire({
           icon: "error",
           title: "Oops...",

@@ -18,8 +18,7 @@ const Home = () => {
 
     <div>
          
-         <SlideShow></SlideShow>
- 
+        <SlideShow></SlideShow>
         <Active></Active>
         <TradingTips></TradingTips>
         <Journey></Journey>

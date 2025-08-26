@@ -44,7 +44,7 @@ const Navbar = () => {
 
        
 
-      <p>{user && user.email}</p>
+      
     </div>
   );
 };

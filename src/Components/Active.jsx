@@ -2,13 +2,12 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router";
 
 const Active = () => {
-  
-  // const {_id, name, status} = useLoaderData()
+ 
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:3000/users")
+    fetch("https://greenleaf-assignment-10.vercel.app/users")
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

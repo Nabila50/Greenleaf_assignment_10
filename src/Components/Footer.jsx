@@ -3,12 +3,12 @@ import { Link } from "react-router";
 
 const Footer = () => {
   return (
-    <div>
+    <div className="mb-[-24px]">
       <footer className="footer sm:footer-horizontal bg-lime-200 text-base-content justify-between p-10">
         <nav>
           <div className="grid grid-cols-1 lobster-regular">
             <a>
-              <img className="w-40" src="logo.png" alt="" />
+              <img className="w-40" src="/logo.png" alt="" />
             </a>
             <p className="text-right">Where you find yourself</p>
             </div>

@@ -30,12 +30,12 @@ const router = createBrowserRouter([
       },
       {
         path: "explore",
-        loader: () => fetch(`http://localhost:3000/users`),
+        loader: () => fetch(`https://greenleaf-assignment-10.vercel.app/users`),
         Component: ExploreGardener,
       },
       {
         path: "browser",
-        loader: () => fetch(`http://localhost:3000/gardens`),
+        loader: () => fetch(`https://greenleaf-assignment-10.vercel.app/gardens`),
         Component: BrowserTips,
       },
       {
@@ -57,7 +57,7 @@ const router = createBrowserRouter([
       {
         path: "/myTips/details/:id",
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/users/details/${params.id}`),
+          fetch(`https://greenleaf-assignment-10.vercel.app/users/details/${params.id}`),
         element: (
           <PrivateRoute>
             <MyTips></MyTips>
@@ -68,7 +68,7 @@ const router = createBrowserRouter([
       {
         path: "/myTips/:email",
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/gardens/${params.email}`),
+          fetch(`https://greenleaf-assignment-10.vercel.app/gardens/${params.email}`),
         element: (
           <PrivateRoute>
             <MyTips></MyTips>
@@ -78,7 +78,7 @@ const router = createBrowserRouter([
        {
         path: "/tipDetails/:id",
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/garden/${params.id}`),
+          fetch(`https://greenleaf-assignment-10.vercel.app/garden/${params.id}`),
         element: (
           <PrivateRoute>
             <TipDetails></TipDetails>
@@ -88,7 +88,7 @@ const router = createBrowserRouter([
       
       {
         path: "UpdateTip/info/:id",
-        loader: ({ params }) => fetch(`http://localhost:3000/gardens/info/${params.id}`),
+        loader: ({ params }) => fetch(`https://greenleaf-assignment-10.vercel.app/gardens/info/${params.id}`),
         element: (
           <PrivateRoute>
             <UpdateTip ></UpdateTip>

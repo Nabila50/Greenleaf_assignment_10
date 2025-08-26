@@ -16,10 +16,7 @@ const TipDetails = () => {
     difficultiy,
   } = gardenData;
 
-  // const initialGardener = useLoaderData(id);
-  // const [gardeners, setGardeners] = useState(initialGardener);
-  // console.log(initialGardener);
-
+ 
   return (
     <div className="bg-base-100 my-20 ">
       <div className=" bg-lime-100 py-10 rounded-4xl">

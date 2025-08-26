@@ -28,7 +28,7 @@ const UpdateTip = () => {
     console.log(updatedTips);
 
     // send updatedTip to the database
-    fetch(`http://localhost:3000/gardens/info/${_id}`, {
+    fetch(`https://greenleaf-assignment-10.vercel.app/gardens/info/${_id}`, {
       method: 'PUT',
       headers: {
         "content-type": "application/json",

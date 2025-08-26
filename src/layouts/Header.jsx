@@ -3,7 +3,7 @@ import Navbar from "../Components/Navbar";
 import { Link, useLoaderData } from "react-router";
 import { AuthContext } from "../Provider/AuthProvider";
 import Swal from "sweetalert2";
-import SlideShow from "../Components/SlideShow";
+ 
 
 const Header = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -30,7 +30,7 @@ const Header = () => {
 
   useEffect(() => {
     if (user?.uid) {
-      fetch(`http://localhost:3000/users/uid/${user.uid}`)
+      fetch(`https://greenleaf-assignment-10.vercel.app/users/uid/${user.uid}`)
         .then((res) => res.json())
         .then((data) => {
           console.log(data);
@@ -86,7 +86,7 @@ const Header = () => {
     >
       <div className="w-11/12 mx-auto grid grid-cols-9 md:grid-cols-12 py-3 justify-center">
         <div className="md:col-span-2">
-          <img className="w-20" src="logo.png" alt="" />
+          <img className="w-20" src="/logo.png" alt="" />
         </div>
         <div className="col-span-7 text-center pt-4">
           <Navbar></Navbar>
@@ -108,7 +108,8 @@ const Header = () => {
                   />
                   {isHovered && userProfile && (
                     <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 bg-black text-white text-sm px-3 py-1 rounded shadow-lg z-10 whitespace-nowrap">
-                      <p>{userProfile?.name || "No Name"}</p>
+                      {/* <p>{userProfile?.name || "No Name"}</p> */}
+                      <p>{user && user.email}</p>
                     </div>
                   )}
                 </div>

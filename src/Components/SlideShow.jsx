@@ -18,7 +18,6 @@ const SlideShow = () => {
   return (
     <div className="relative w-full h-[500px] ">
       <Swiper
-        // install Swiper modules
         modules={[Pagination, Scrollbar, A11y, Autoplay]}
         spaceBetween={50}
         slidesPerView={1}
